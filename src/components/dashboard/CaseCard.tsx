@@ -7,6 +7,8 @@ interface CaseCardProps {
   days: number;
   activities: number;
   assignees?: string[];
+  status?: "active" | "pending" | "completed";
+  onClick?: () => void;
 }
 
 export const CaseCard = ({
@@ -15,12 +17,23 @@ export const CaseCard = ({
   days,
   activities,
   assignees,
+  status = "active",
+  onClick,
 }: CaseCardProps) => {
+  const statusLabels = {
+    active: "En curso",
+    pending: "Pendiente",
+    completed: "Completado",
+  };
+
   return (
-    <div className="bg-white relative flex min-w-[350px] flex-col w-[375px] flex-1 shrink basis-[0%] px-6 py-4 rounded-2xl max-md:px-5">
+    <div 
+      className="bg-white relative flex min-w-[350px] flex-col w-[375px] flex-1 shrink basis-[0%] px-6 py-4 rounded-2xl max-md:px-5 transition-all duration-200 hover:shadow-md cursor-pointer active:scale-[0.99]"
+      onClick={onClick}
+    >
       <div className="self-stretch z-0 flex min-h-32 w-full flex-col items-stretch">
         <div>
-          <StatusBadge status="active" label="En curso" />
+          <StatusBadge status={status} label={statusLabels[status]} />
           <div className="text-[rgba(25,59,99,1)] text-base font-medium leading-[1.1] tracking-[-0.48px] mt-2">
             {title}
           </div>
