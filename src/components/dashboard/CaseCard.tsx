@@ -1,3 +1,6 @@
+
+import { StatusBadge } from "@/components/ui/StatusBadge";
+
 interface CaseCardProps {
   title: string;
   client: string;
