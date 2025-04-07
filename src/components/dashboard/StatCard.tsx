@@ -1,41 +1,37 @@
-
 interface StatCardProps {
-  value: string | number;
+  count: number;
   label: string;
-  iconSrc?: string;
-  onClick?: () => void;
-  variant?: "default" | "highlighted";
 }
 
-export const StatCard = ({ 
-  value, 
-  label, 
-  iconSrc = "https://cdn.builder.io/api/v1/image/assets/a4c461f05ef64f219f461f3c2e29acff/e7e90d50f32fd63250a85925cdf887283853dc82?placeholderIfAbsent=true", 
-  onClick,
-  variant = "default"
-}: StatCardProps) => {
-  const variantClasses = variant === "highlighted" 
-    ? "border-2 border-[rgba(25,59,99,0.2)] bg-[rgba(25,59,99,0.03)]" 
-    : "bg-white hover:shadow-md";
-
+export const StatCard = ({ count, label }: StatCardProps) => {
   return (
-    <div 
-      className={`flex min-w-60 items-center gap-[40px_100px] text-[rgba(25,59,99,1)] justify-between grow shrink w-[334px] p-6 rounded-2xl max-md:px-5 transition-all duration-200 cursor-pointer ${variantClasses}`}
-      onClick={onClick}
-    >
-      <div className="self-stretch flex flex-col w-[75px] my-auto">
-        <div className="text-[62px] font-medium leading-[0.8] max-md:text-[40px]">
-          {value}
+    <div className="w-[395px] h-[184px] relative bg-white px-[19px] py-7 rounded-2xl max-md:w-full">
+      <div className="text-[108px] text-[#363636] leading-[86.4px]">
+        {count}
+      </div>
+      <div className="text-base text-[#151718] mt-[7px]">{label}</div>
+      <div className="absolute flex gap-4 right-6 bottom-6">
+        <div className="w-[43px] h-[43px] flex items-center justify-center rounded-[50%]">
+          <div
+            dangerouslySetInnerHTML={{
+              __html: `<svg width="43" height="43" viewBox="0 0 43 43" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="21.5" cy="21.5" r="21.5" transform="rotate(-90 21.5 21.5)" fill="#CE244C"/>
+              <circle cx="21.5" cy="21.5" r="21" transform="rotate(-90 21.5 21.5)" stroke="white" stroke-opacity="0.25"/>
+              <path d="M20.9025 15.7097V26.0968M15.709 20.9033H26.0961" stroke="white" stroke-width="2.48" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>`,
+            }}
+          />
         </div>
-        <div className="text-sm font-semibold leading-[1.3] z-10 mr-[-25px] mt-3">
-          {label}
+        <div className="w-[43px] h-[43px] flex items-center justify-center rounded-[50%]">
+          <div
+            dangerouslySetInnerHTML={{
+              __html: `<svg width="43" height="43" viewBox="0 0 43 43" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="21.5" cy="21.5" r="21" transform="rotate(-90 21.5 21.5)" fill="white" stroke="#EFEEF1"/>
+            </svg>`,
+            }}
+          />
         </div>
       </div>
-      <img
-        src={iconSrc}
-        className="aspect-[1] object-contain w-[29px] self-stretch shrink-0 my-auto transition-transform hover:scale-110"
-        alt="Stat icon"
-      />
     </div>
   );
 };
