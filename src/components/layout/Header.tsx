@@ -29,7 +29,7 @@ export const Header = () => {
   } = useLocation();
   return <div className="mb-[30px]">
       <div className="flex justify-between items-center pb-5 border-b-[#E1E6E8] border-b border-solid max-sm:flex-col max-sm:items-start max-sm:gap-2.5">
-        <h1 className="text-[#363636] tracking-[-0.48px] text-center font-bold text-5xl">
+        <h1 className="text-[#363636] tracking-[-0.48px] text-2xl text-center font-bold">
           {info[pathname].title}
         </h1>
         <div className="flex items-center gap-5 max-sm:hidden">
